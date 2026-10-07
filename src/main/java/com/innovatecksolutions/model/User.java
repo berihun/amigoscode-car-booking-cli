@@ -4,15 +4,15 @@ import java.lang.reflect.Type;
 
 public class User {
 //    @Generate(name= Type.)
-    private String id;
+    private String userId;
     private String name;
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -21,5 +21,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

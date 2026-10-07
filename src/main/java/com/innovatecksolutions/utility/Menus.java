@@ -1,27 +1,77 @@
 package com.innovatecksolutions.utility;
 
-public class Menus {
-    void main(){
+import com.innovatecksolutions.model.User;
+import com.innovatecksolutions.repository.UsersPostgresRepository;
+import com.innovatecksolutions.repository.UsersRepository;
+import com.innovatecksolutions.services.UserServices;
 
+import java.util.List;
+import java.util.Scanner;
+
+public class Menus {
+    // Instantiate repository and service so userServices is NOT null
+    private final UsersRepository usersRepository = new UsersPostgresRepository();
+    private final UserServices userServices = new UserServices(usersRepository);
+
+    public static void main(String[] args) {
+        Menus menuApp = new Menus();
+        menuApp.start();
     }
-    void chooseMenu(long no){
-        switch (no){
+
+    public void start() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n--- MAIN MENU ---");
+            System.out.println("1. Book Car");
+            System.out.println("2. Delete Booking");
+            System.out.println("3. View All User Booked a Car");
+            System.out.println("4. View All Bookings");
+            System.out.println("5. View Available Cars");
+            System.out.println("6. View Available Electric Car");
+            System.out.println("7. View All Users");
+            System.out.println("8. Exit Application");
+            System.out.print("Select an option: ");
+
+            int choice = sc.nextInt();
+            if (choice == 8) {
+                System.out.println("Exiting application...");
+                break;
+            }
+            chooseMenu(choice);
+        }
+    }
+
+    void chooseMenu(int no) {
+        switch (no) {
             case 1:
-                //book car
+                System.out.println("Book car selected.");
+                break;
             case 2:
-                // delete booking
+                System.out.println("Delete booking selected.");
+                break;
             case 3:
-                // view all user booked cars
+                System.out.println("View user booked cars selected.");
+                break;
             case 4:
-                // view all bookings
+                System.out.println("View all bookings selected.");
+                break;
             case 5:
-                // view available cars
+                System.out.println("View available cars selected.");
+                break;
             case 6:
-                // view available electric cars
+                System.out.println("View available electric cars selected.");
+                break;
             case 7:
-                // view all users
-            case 8:
-                // exit
+                List<User> usersList = userServices.findAllUsers();
+                if (usersList.isEmpty()) {
+                    System.out.println("No users found in database.");
+                } else {
+                    usersList.forEach(System.out::println);
+                }
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+                break;
         }
     }
 }
