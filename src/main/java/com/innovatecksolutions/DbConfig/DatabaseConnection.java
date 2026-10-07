@@ -13,7 +13,7 @@ public class DatabaseConnection {
     // Static block runs once when the class is loaded
     static {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/students_db");
+        config.setJdbcUrl("jdbc:postgresql://localhost:5432/car_rentals_db");
         config.setUsername("postgres");      // your postgres username
         config.setPassword("123456");      // your postgres password
 
