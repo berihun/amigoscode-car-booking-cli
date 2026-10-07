@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class create_schema {
+public class Createschema {
     public static void main(String[] args) {
         String sqlUser = """
                 CREATE TABLE IF NOT EXISTS users (
