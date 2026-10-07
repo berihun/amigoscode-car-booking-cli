@@ -1,7 +1,7 @@
 package com.innovatecksolutions.model;
-import com.
+//import com.
 public class Brand {
-    @Id
+//    @Id
     private Long id;
     private String name;
     private String type;
