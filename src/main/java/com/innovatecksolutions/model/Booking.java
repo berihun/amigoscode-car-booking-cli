@@ -6,20 +6,21 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Booking {
-    private Long bookingId;
+    private String bookingId;
     private LocalDate startDate;
     private LocalDate endDate;
 
-    private Long userId;
-    private Long carId;
-    private BigDecimal price;
+    private String userId;
+    private String carId;
+    private BigDecimal totalCharge;
     private BookingStatus status = BookingStatus.ACTIVE;
+    private LocalDate createdAt;
 
-    public Long getBookingId() {
+    public String getBookingId() {
         return bookingId;
     }
 
-    public void setBookingId(Long bookingId) {
+    public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
     }
 
@@ -39,28 +40,28 @@ public class Booking {
         this.endDate = endDate;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public Long getCarId() {
+    public String getCarId() {
         return carId;
     }
 
-    public void setCarId(Long carId) {
+    public void setCarId(String carId) {
         this.carId = carId;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getTotalCharge() {
+        return totalCharge;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setTotalCharge(BigDecimal price) {
+        this.totalCharge = price;
     }
 
     public BookingStatus getStatus() {
@@ -69,5 +70,27 @@ public class Booking {
 
     public void setStatus(BookingStatus status) {
         this.status = status;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingId='" + bookingId + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", userId='" + userId + '\'' +
+                ", carId='" + carId + '\'' +
+                ", totalCharge=" + totalCharge +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
