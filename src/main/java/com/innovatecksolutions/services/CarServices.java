@@ -29,8 +29,6 @@ public class CarServices {
             System.out.println("No cars found");
         }
 
-
-
         // 1. Collect all carIds that currently have an active booking
         Set<String> bookedCarIds = bookings.stream()
                 .map(Booking::getCarId)
