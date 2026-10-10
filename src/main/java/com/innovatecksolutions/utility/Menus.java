@@ -62,7 +62,7 @@ public class Menus {
                 bookingService.deleteBooking();
                 break;
             case 3:
-                System.out.println("View user booked cars selected.");
+                bookingService.viewAllCarsByUser();
                 break;
             case 4:
                 List<Booking> bookings = bookingRepository.findAllBookings();

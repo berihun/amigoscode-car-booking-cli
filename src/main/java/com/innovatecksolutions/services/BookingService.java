@@ -119,4 +119,32 @@ public class BookingService {
         }
         bookingRepository.delete(bookingId);
     }
+
+    public void viewAllCarsByUser() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Viewing cars...");
+        System.out.println("Enter user Id:");
+        String userId = sc.nextLine().trim();
+        boolean userExists = usersRepository.findAllUsers().stream()
+                .anyMatch(u -> u.getUserId().equals(userId));
+
+        if (!userExists) {
+            System.out.println("Error: user with ID '" + userId + "' does not exist in the database!");
+            return;
+        }
+        List<Booking> bookingList = bookingRepository.findAllBookings().stream()
+                .filter(ll->ll.getUserId().equalsIgnoreCase(userId))
+                .toList();
+
+        if (bookingList.isEmpty()) {
+            System.out.println("No cars booked with user ID '" + userId + "' in the database!");
+        }
+
+        bookingList.stream()
+                .map(ll -> {
+                    System.out.println(ll);
+                    return null;
+                })
+                .forEach(ll -> {}); // Terminal operation to trigger the stream
+    }
 }
