@@ -9,6 +9,6 @@ How to configure and run the application:
 https://github.com/berihun/amigoscode-car-booking-cli
   2. Open the project in intellij Ide/idea
   3. Run the database script to create the schema and add seed data
-  4. Finally, you can run the app from the menu and check
+  4. Finally, run the app from the menu and check
     
   
