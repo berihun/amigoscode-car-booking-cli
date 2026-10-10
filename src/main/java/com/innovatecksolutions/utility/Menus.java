@@ -1,8 +1,9 @@
 package com.innovatecksolutions.utility;
 
+import com.innovatecksolutions.model.Booking;
 import com.innovatecksolutions.model.User;
-import com.innovatecksolutions.repository.UsersPostgresRepository;
-import com.innovatecksolutions.repository.UsersRepository;
+import com.innovatecksolutions.repository.*;
+import com.innovatecksolutions.services.BookingService;
 import com.innovatecksolutions.services.UserServices;
 
 import java.util.List;
@@ -10,9 +11,20 @@ import java.util.Scanner;
 
 public class Menus {
     // Instantiate repository and service so userServices is NOT null
+
+    // initialize booking repo and service
     private final UsersRepository usersRepository = new UsersPostgresRepository();
     private final UserServices userServices = new UserServices(usersRepository);
 
+    private final BookingRepository bookingRepository = new BookingPostgresRepository();
+    private final CarRepository carRepository = new CarPostgesRepository();
+
+    // Re-use usersRepository instead of creating usersRepository2
+    private final BookingService bookingService = new BookingService(
+            bookingRepository,
+            carRepository,
+            usersRepository
+    );
     public static void main(String[] args) {
         Menus menuApp = new Menus();
         menuApp.start();
@@ -44,16 +56,21 @@ public class Menus {
     void chooseMenu(int no) {
         switch (no) {
             case 1:
-                System.out.println("Book car selected.");
+                bookingService.saveBookings();
                 break;
             case 2:
-                System.out.println("Delete booking selected.");
+                bookingService.deleteBooking();
                 break;
             case 3:
                 System.out.println("View user booked cars selected.");
                 break;
             case 4:
-                System.out.println("View all bookings selected.");
+                List<Booking> bookings = bookingRepository.findAllBookings();
+                if (bookings.isEmpty()) {
+                    System.out.println("No bookings found in the database.");
+                }else {
+                    bookings.forEach(System.out::println);
+                }
                 break;
             case 5:
                 System.out.println("View available cars selected.");

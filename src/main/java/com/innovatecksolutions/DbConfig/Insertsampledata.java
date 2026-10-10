@@ -1,5 +1,7 @@
 package com.innovatecksolutions.DbConfig;
 
+import com.innovatecksolutions.enumerations.BookingStatus;
+
 import java.sql.*;
 
 public class Insertsampledata {
@@ -86,22 +88,22 @@ public class Insertsampledata {
             // 4. Insert Bookings (Referencing existing USR and CAR IDs)
             try (PreparedStatement pstmtBooking = connection.prepareStatement(insertBookingSql)) {
                 pstmtBooking.setString(1, "BKG001");
-                pstmtBooking.setString(2, "CAR001"); // FK to cars
-                pstmtBooking.setString(3, "USR001"); // FK to users
+                pstmtBooking.setString(2, "CAR001");
+                pstmtBooking.setString(3, "USR001");
                 pstmtBooking.setDouble(4, 256.50);
                 pstmtBooking.setDate(5, Date.valueOf("2026-03-01"));
                 pstmtBooking.setDate(6, Date.valueOf("2026-03-04"));
-                pstmtBooking.setString(7, "CONFIRMED");
+                pstmtBooking.setString(7, BookingStatus.ACTIVE.name()); // "ACTIVE"
                 pstmtBooking.setDate(8, Date.valueOf("2026-02-28"));
                 pstmtBooking.executeUpdate();
 
                 pstmtBooking.setString(1, "BKG002");
-                pstmtBooking.setString(2, "CAR002"); // FK to cars
-                pstmtBooking.setString(3, "USR002"); // FK to users
+                pstmtBooking.setString(2, "CAR002");
+                pstmtBooking.setString(3, "USR002");
                 pstmtBooking.setDouble(4, 360.00);
                 pstmtBooking.setDate(5, Date.valueOf("2026-03-10"));
                 pstmtBooking.setDate(6, Date.valueOf("2026-03-13"));
-                pstmtBooking.setString(7, "PENDING");
+                pstmtBooking.setString(7, BookingStatus.COMPLETED.name()); // "COMPLETED"
                 pstmtBooking.setDate(8, Date.valueOf("2026-03-01"));
                 pstmtBooking.executeUpdate();
                 System.out.println("Bookings inserted.");

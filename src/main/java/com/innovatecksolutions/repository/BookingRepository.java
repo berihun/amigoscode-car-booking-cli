@@ -5,8 +5,8 @@ import com.innovatecksolutions.model.Booking;
 import java.util.List;
 
 public interface BookingRepository {
-    void save(Booking booking);
-    void delete(Booking booking);
+    String save(Booking booking);
+    void delete(String bookingId);
     List<Booking> findAllBookings();
     void updateBooking(Booking booking);
 }
