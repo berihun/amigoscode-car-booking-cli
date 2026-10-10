@@ -4,6 +4,7 @@ import com.innovatecksolutions.model.Booking;
 import com.innovatecksolutions.model.User;
 import com.innovatecksolutions.repository.*;
 import com.innovatecksolutions.services.BookingService;
+import com.innovatecksolutions.services.CarServices;
 import com.innovatecksolutions.services.UserServices;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Menus {
 
     private final BookingRepository bookingRepository = new BookingPostgresRepository();
     private final CarRepository carRepository = new CarPostgesRepository();
+    private final CarServices carServices = new CarServices(carRepository, bookingRepository);
 
     // Re-use usersRepository instead of creating usersRepository2
     private final BookingService bookingService = new BookingService(
@@ -25,6 +27,7 @@ public class Menus {
             carRepository,
             usersRepository
     );
+
     public static void main(String[] args) {
         Menus menuApp = new Menus();
         menuApp.start();
@@ -68,15 +71,15 @@ public class Menus {
                 List<Booking> bookings = bookingRepository.findAllBookings();
                 if (bookings.isEmpty()) {
                     System.out.println("No bookings found in the database.");
-                }else {
+                } else {
                     bookings.forEach(System.out::println);
                 }
                 break;
             case 5:
-                System.out.println("View available cars selected.");
+                carServices.getAvailabeCars();
                 break;
             case 6:
-                System.out.println("View available electric cars selected.");
+                carServices.getElectricCars();
                 break;
             case 7:
                 List<User> usersList = userServices.findAllUsers();
