@@ -5,7 +5,7 @@ The application is developed using Java SE. It is  a Java CLI project with the f
 3. PostgreSQL
 
 How to configure and run the application:
-  1. Pull the app first from GitHub:
+  1. First, pull the project from GitHub:
 https://github.com/berihun/amigoscode-car-booking-cli
   2. Open the project in intellij Ide/idea
   3. Run the database script to create the schema and add seed data
