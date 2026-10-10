@@ -15,6 +15,9 @@ public class UserServices {
     public List<User> findAllUsers(){
         return usersRepository.findAllUsers();
     }
+    public void getAvailabeCars(){
+
+    }
     public void save(User user){
         usersRepository.save(user);
     }

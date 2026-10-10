@@ -26,7 +26,8 @@ public class CarPostgesRepository implements CarRepository {
                 car.setRegistrationNumber(resultSet.getString("registration_no"));
                 car.setCarId(resultSet.getString("car_id"));
                 car.setPricePerDay(resultSet.getBigDecimal("price"));
-//                car.setBrand(resultSet.getString("brand"));
+                car.setBrand(resultSet.getString("brand"));
+                car.setCarType(resultSet.getString("car_type"));
                 carList.add(car);
             }
 

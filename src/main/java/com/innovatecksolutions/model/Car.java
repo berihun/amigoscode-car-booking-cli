@@ -7,7 +7,8 @@ public class Car {
     private String carId;
     private String registrationNumber;
     private BigDecimal pricePerDay;
-    private Brand brand;
+    private String brand;
+    private String carType;
 
     public String getCarId() {
         return carId;
@@ -33,12 +34,20 @@ public class Car {
         this.pricePerDay = pricePerDay;
     }
 
-    public Brand getBrand() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setBrand(Brand brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public void setCarType(String carType) {
+        this.carType = carType;
     }
 
     @Override
@@ -48,6 +57,7 @@ public class Car {
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", pricePerDay=" + pricePerDay +
                 ", brand=" + brand +
+                ", type='" + carType + '\'' +
                 '}';
     }
 }
