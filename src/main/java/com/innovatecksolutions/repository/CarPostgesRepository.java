@@ -21,6 +21,7 @@ public class CarPostgesRepository implements CarRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();) {
 
+
             while (resultSet.next()) {
                 Car car = new Car();
                 car.setRegistrationNumber(resultSet.getString("registration_no"));
